@@ -2,6 +2,7 @@ package com.company.samplequeue.screen;
 
 import com.company.samplequeue.AppProperties;
 import io.jmix.awsqueue.app.TypedQueueMessageBuilder;
+import io.jmix.awsqueue.entity.QueueType;
 import io.jmix.awsqueue.utils.QueueInfoUtils;
 import io.jmix.ui.component.Button;
 import io.jmix.ui.component.TextArea;
@@ -32,13 +33,19 @@ public class AwsQueueMessagingScreen extends Screen {
 
     @Subscribe("sendButton")
     public void onSendButtonClick(Button.ClickEvent event) {
-        Message<String> message = TypedQueueMessageBuilder
-                .fromPayload(messageField.getRawValue())
-                .withMessageGroupId(messageGroupId)
-                .withMessageDeduplicationId(UUID.randomUUID().toString())
-                .toMessageBuilder(QueueInfoUtils.getTypeByName(appProperties.getQueueName()))
-                .build();
-        queueMessagingTemplate.send(appProperties.getQueueName(), message);
+        MessageBuilder<String> messageBuilder;
+
+        if(QueueInfoUtils.getTypeByName(appProperties.getQueueName()).equals(QueueType.FIFO)){
+            messageBuilder = TypedQueueMessageBuilder
+                    .fromPayload(messageField.getRawValue())
+                    .fifo(messageGroupId, UUID.randomUUID().toString());
+        } else {
+            messageBuilder = TypedQueueMessageBuilder
+                    .fromPayload(messageField.getRawValue())
+                    .standard();
+        }
+
+        queueMessagingTemplate.send(appProperties.getQueueName(), messageBuilder.build());
         log.info("Message send to the Amazon Queue");
     }
 }
