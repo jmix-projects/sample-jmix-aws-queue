@@ -1,6 +1,8 @@
 package com.company.samplequeue.screen;
 
 import com.company.samplequeue.AppProperties;
+import io.jmix.awsqueue.app.TypedQueueMessageBuilder;
+import io.jmix.awsqueue.utils.QueueInfoUtils;
 import io.jmix.ui.component.Button;
 import io.jmix.ui.component.TextArea;
 import io.jmix.ui.screen.Screen;
@@ -10,6 +12,7 @@ import io.jmix.ui.screen.UiDescriptor;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.aws.messaging.core.QueueMessagingTemplate;
+import org.springframework.messaging.Message;
 import org.springframework.messaging.support.MessageBuilder;
 
 import java.util.UUID;
@@ -29,14 +32,13 @@ public class AwsQueueMessagingScreen extends Screen {
 
     @Subscribe("sendButton")
     public void onSendButtonClick(Button.ClickEvent event) {
-        MessageBuilder<String> messageBuilder = MessageBuilder.withPayload(messageField.getRawValue());
-        if (appProperties.getQueueName().endsWith(".fifo")) {
-            messageBuilder.setHeader("message-group-id", messageGroupId);
-            messageBuilder.setHeader("message-deduplication-id", UUID.randomUUID().toString());
-        }
-
-        queueMessagingTemplate.send(appProperties.getQueueName(), messageBuilder.build());
+        Message<String> message = TypedQueueMessageBuilder
+                .fromPayload(messageField.getRawValue())
+                .withMessageGroupId(messageGroupId)
+                .withMessageDeduplicationId(UUID.randomUUID().toString())
+                .toMessageBuilder(QueueInfoUtils.getTypeByName(appProperties.getQueueName()))
+                .build();
+        queueMessagingTemplate.send(appProperties.getQueueName(), message);
         log.info("Message send to the Amazon Queue");
     }
-
 }
