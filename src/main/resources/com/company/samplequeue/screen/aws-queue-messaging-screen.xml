@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        caption="msg://awsQueueMessagingScreen.caption">
+    <layout>
+        <form >
+            <column width="300px">
+                <textArea id="messageField" caption="msg://messageBody" datatype="string"/>
+            </column>
+            <column width="200px">
+                <button id="sendButton" caption="msg://send"/>
+            </column>
+        </form>
+    </layout>
+</window>
