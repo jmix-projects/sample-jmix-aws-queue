@@ -1,7 +1,7 @@
 package com.company.samplequeue.screen;
 
 import com.company.samplequeue.AppProperties;
-import io.jmix.awsqueue.app.TypedQueueMessageBuilder;
+import io.jmix.awsqueue.QueueMessageBuilder;
 import io.jmix.awsqueue.entity.QueueType;
 import io.jmix.awsqueue.utils.QueueInfoUtils;
 import io.jmix.ui.component.Button;
@@ -36,11 +36,11 @@ public class AwsQueueMessagingScreen extends Screen {
         MessageBuilder<String> messageBuilder;
 
         if(QueueInfoUtils.getTypeByName(appProperties.getQueueName()).equals(QueueType.FIFO)){
-            messageBuilder = TypedQueueMessageBuilder
+            messageBuilder = QueueMessageBuilder
                     .fromPayload(messageField.getRawValue())
                     .fifo(messageGroupId, UUID.randomUUID().toString());
         } else {
-            messageBuilder = TypedQueueMessageBuilder
+            messageBuilder = QueueMessageBuilder
                     .fromPayload(messageField.getRawValue())
                     .standard();
         }
