@@ -22,8 +22,8 @@ repositories {
 }
 
 dependencies {
-    implementation 'io.jmix.awsqueue:jmix-awsqueue-starter:1.0.0-SNAPSHOT'
-    implementation 'io.jmix.awsqueue:jmix-awsqueue-ui-starter:1.0.0-SNAPSHOT'
+    implementation 'io.jmix.awsqueue:jmix-awsqueue-starter'
+    implementation 'io.jmix.awsqueue:jmix-awsqueue-ui-starter'
 
     implementation 'io.jmix.core:jmix-core-starter'
     implementation 'io.jmix.data:jmix-eclipselink-starter'
