@@ -1,9 +1,9 @@
 package com.company.samplequeue.screen;
 
 import com.company.samplequeue.AppProperties;
-import io.jmix.awsqueue.QueueMessageBuilder;
-import io.jmix.awsqueue.entity.QueueType;
-import io.jmix.awsqueue.utils.QueueInfoUtils;
+import io.jmix.simplequeue.entity.QueueType;
+import io.jmix.simplequeue.utils.QueueInfoUtils;
+import io.jmix.simplequeue.utils.QueueMessageBuilder;
 import io.jmix.ui.component.Button;
 import io.jmix.ui.component.TextArea;
 import io.jmix.ui.screen.Screen;
@@ -13,7 +13,6 @@ import io.jmix.ui.screen.UiDescriptor;
 import org.slf4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.aws.messaging.core.QueueMessagingTemplate;
-import org.springframework.messaging.Message;
 import org.springframework.messaging.support.MessageBuilder;
 
 import java.util.UUID;
