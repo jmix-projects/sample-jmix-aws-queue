@@ -6,11 +6,11 @@ plugins {
 apply plugin: 'org.springframework.boot'
 
 jmix {
-    bomVersion = '1.0.0-SNAPSHOT'
+    bomVersion = '1.1.0-SNAPSHOT'
 }
 
 group = 'com.company'
-version = '1.0.0-SNAPSHOT'
+version = '1.1.0-SNAPSHOT'
 sourceCompatibility = '1.8'
 
 repositories {
@@ -22,8 +22,9 @@ repositories {
 }
 
 dependencies {
-    implementation 'io.jmix.awsqueue:jmix-awsqueue-starter'
-    implementation 'io.jmix.awsqueue:jmix-awsqueue-ui-starter'
+    implementation 'io.jmix.awsqueue:jmix-aws-simple-queue-starter:1.1.0-SNAPSHOT'
+//    implementation 'io.jmix.awsqueue:jmix-yandex-simple-queue-starter:1.1.0-SNAPSHOT'
+    implementation 'io.jmix.awsqueue:jmix-simple-queue-ui-starter:1.1.0-SNAPSHOT'
 
     implementation 'io.jmix.core:jmix-core-starter'
     implementation 'io.jmix.data:jmix-eclipselink-starter'
@@ -37,6 +38,7 @@ dependencies {
     implementation 'io.jmix.localfs:jmix-localfs-starter'
 
     implementation 'org.springframework.boot:spring-boot-starter-web'
+//    implementation 'org.springframework.cloud:spring-cloud-aws-messaging'
 
 
     testImplementation('org.springframework.boot:spring-boot-starter-test') {
