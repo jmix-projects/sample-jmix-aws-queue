@@ -22,9 +22,9 @@ repositories {
 }
 
 dependencies {
-    implementation 'io.jmix.simplequeue:jmix-simplequeue-aws-starter:1.1.0-SNAPSHOT'
-//    implementation 'io.jmix.simplequeue:jmix-simplequeue-yandex-starter:1.1.0-SNAPSHOT'
-    implementation 'io.jmix.simplequeue:jmix-simplequeue-ui-starter:1.1.0-SNAPSHOT'
+    implementation 'io.jmix.cloudqueue:jmix-cloudqueue-aws-starter:1.1.0-SNAPSHOT'
+//    implementation 'io.jmix.cloudqueue:jmix-cloudqueue-yandex-starter:1.1.0-SNAPSHOT'
+    implementation 'io.jmix.cloudqueue:jmix-cloudqueue-ui-starter:1.1.0-SNAPSHOT'
 
     implementation 'io.jmix.core:jmix-core-starter'
     implementation 'io.jmix.data:jmix-eclipselink-starter'

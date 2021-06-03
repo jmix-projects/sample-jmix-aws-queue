@@ -1,7 +1,7 @@
 package com.company.samplequeue;
 
-import io.jmix.simplequeue.api.MessageQueueHandler;
-import io.jmix.simplequeue.api.QueueManager;
+import io.jmix.cloudqueue.api.MessageQueueHandler;
+import io.jmix.cloudqueue.api.QueueManager;
 import org.slf4j.Logger;
 import org.springframework.stereotype.Component;
 
