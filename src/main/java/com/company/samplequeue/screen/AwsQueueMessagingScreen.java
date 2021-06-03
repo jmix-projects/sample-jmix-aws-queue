@@ -1,9 +1,9 @@
 package com.company.samplequeue.screen;
 
 import com.company.samplequeue.AppProperties;
-import io.jmix.simplequeue.entity.QueueType;
-import io.jmix.simplequeue.utils.QueueInfoUtils;
-import io.jmix.simplequeue.utils.QueueMessageBuilder;
+import io.jmix.cloudqueue.entity.QueueType;
+import io.jmix.cloudqueue.utils.QueueInfoUtils;
+import io.jmix.cloudqueue.utils.QueueMessageBuilder;
 import io.jmix.ui.component.Button;
 import io.jmix.ui.component.TextArea;
 import io.jmix.ui.screen.Screen;
